@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<noscript><style>#loader{display:none!important}</style></noscript>
+<title>Стоп, собачьи бои</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#15110f;--bg2:#1d1815;--line:#3a2f28;--text:#efe3d0;--dim:#b3a28c;--red:#e07a3a;--amber:#5fa7a0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);background:var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:1.1rem/1.7 'PT Serif',Georgia,serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+h1,h2,h3{font-family:'Oswald','Arial Narrow',sans-serif;font-weight:700;line-height:1.1;margin:0 0 .5em;letter-spacing:.01em}
+h2{font-size:clamp(1.9rem,4vw,2.7rem)}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+a{color:var(--amber)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(14,15,18,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;flex-wrap:wrap}
+.logo{font:700 1.15rem 'Oswald',sans-serif;color:var(--text);text-decoration:none}
+.menu{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.menu a{display:block;color:var(--dim);text-decoration:none;padding:6px 9px;font-size:.98rem;border-bottom:2px solid transparent}
+.menu a:hover{color:var(--text)}
+.menu a.act{color:var(--text);border-bottom-color:var(--red)}
+#burger{display:none;font:inherit;color:var(--text);background:none;border:1px solid var(--line);padding:4px 14px;cursor:pointer}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#1b2733 0%,#4a3540 55%,#b8643a 130%)}
+.hero .wrap{padding-top:110px;padding-bottom:110px;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,8vw,5.6rem);max-width:13ch}
+.hero p{max-width:40ch;color:var(--text);font-size:1.2rem}
+.hero em{font-style:normal;color:#ffb870}
+.chain{position:absolute;right:-20px;top:0;height:100%;width:180px;opacity:.35}.skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(70px,16vw,150px);z-index:0}body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;z-index:70;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+.btn{display:inline-block;margin-top:14px;color:#1a120d;background:var(--red);border:0;padding:12px 26px;font:500 1rem 'Oswald',sans-serif;letter-spacing:.04em;text-decoration:none;cursor:pointer}
+.btn:hover{background:#f0914f}.btn.ghost{color:var(--text)}
+.btn.ghost{background:none;border:1px solid var(--dim)}
+section{padding:84px 0;border-bottom:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+.about .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+blockquote{margin:0;padding:6px 0 6px 22px;border-left:3px solid var(--red);font-style:italic;color:var(--dim)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px;margin-top:34px}
+.cols>div{border-top:2px solid var(--red);padding-top:16px}
+.cols h3{font-size:1.3rem}.cols p{margin:0;color:var(--dim)}
+.signs ul{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 44px}
+.signs li{padding:16px 0;border-bottom:1px solid var(--line)}
+.signs b{font-family:'Oswald',sans-serif;font-size:1.15rem;display:block;color:var(--amber);font-weight:500}
+.signs span{color:var(--dim)}
+.tabs{display:flex;gap:0;margin:26px 0 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tabs button{font:500 1.05rem 'Oswald',sans-serif;color:var(--dim);background:none;border:0;border-bottom:2px solid transparent;padding:12px 20px;cursor:pointer;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--text);border-bottom-color:var(--red)}
+.tabpanel{padding:26px 0}.tabpanel[hidden]{display:none}
+.tabpanel ol{margin:0;padding-left:1.3em}.tabpanel li{margin:.6em 0}
+.sos{font:700 1.4rem 'Oswald',sans-serif;color:var(--red);margin-right:10px}
+.tv{margin-top:30px;border:1px solid var(--line);background:#000;padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.tv iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+.note{color:var(--dim);font-size:.95rem}
+footer{padding:44px 22px 56px;text-align:center;color:var(--dim)}
+footer b{color:var(--text)}
+@media(max-width:780px){.about .grid,.signs ul{grid-template-columns:1fr}
+ #burger{display:block}.menu{display:none;flex-direction:column;width:100%;padding-bottom:10px}.menu.open{display:flex}
+ .hero .wrap{padding-top:70px;padding-bottom:70px}.chain{opacity:.25}}
+.hero h1,.hero p,.hero .btn{animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}.hero p{animation-delay:.25s}.hero .btn{animation-delay:.5s}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.chain{transform-origin:50% 0;animation:sway 6s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2.5deg)}}
+.skyline g:nth-child(2) rect{animation:glow 4s ease-in-out infinite}.skyline g:nth-child(2) rect:nth-child(3n){animation-delay:1.2s}.skyline g:nth-child(2) rect:nth-child(3n+1){animation-delay:2.4s;animation-duration:5.5s}
+@keyframes glow{0%,100%{opacity:1}45%{opacity:.2}60%{opacity:.9}}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}.js .rv.in{opacity:1;transform:none}
+.nose{display:block;width:100%;max-width:340px;margin:0 0 6px}.about blockquote{margin-top:22px}
+.js .about .grid>div:not(.in) .sc{stroke-dashoffset:80}.sc{stroke-dasharray:80;stroke-dashoffset:0;transition:stroke-dashoffset .8s ease .5s}
+.trailsec{padding:46px 0;background:var(--bg2)}.trail{display:block;width:100%;height:auto}.trailsec .note{text-align:center;margin:10px 0 0}
+.js .trail .p{opacity:0}.trail.go .p{animation:step .4s forwards;animation-delay:calc(var(--i)*.25s)}
+@keyframes step{to{opacity:.9}}
+html.pre{overflow:hidden}
+html.pre .hero h1,html.pre .hero p,html.pre .hero .btn{animation-play-state:paused}
+#loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:opacity .6s ease,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+#loader svg{width:min(82vw,520px);height:auto;display:block}
+#loader .p{opacity:0;animation:lstep 3s ease-in-out infinite;animation-delay:calc(var(--i)*.2s)}
+@keyframes lstep{0%{opacity:0}10%,55%{opacity:.9}80%,100%{opacity:0}}
+#loader span{font:500 1rem 'Oswald',sans-serif;color:var(--dim);letter-spacing:.08em}
+@media(prefers-reduced-motion:reduce){#loader .p{opacity:.9!important}}
+.game{text-align:center}.gamebox{margin:28px auto 0;max-width:780px;padding:36px 16px 30px;border:1px solid var(--line);background:var(--bg)}
+.chainrow{display:flex;align-items:center;justify-content:center;margin-bottom:26px}
+.chainrow .end{width:clamp(26px,6vw,40px);flex:none}.chainrow .anchor{width:clamp(48px,11vw,78px);margin-left:6px}
+.link{width:clamp(36px,9vw,62px);margin:0 -7px;padding:0;background:none;border:0;color:#9aa8b6;cursor:pointer;flex:none;transition:transform .3s,opacity .7s,color .25s}
+.link:hover{transform:translateY(-4px)}.link svg{display:block;width:100%;height:auto}
+.link .cr{fill:none;stroke:var(--red);stroke-width:4;stroke-linecap:round;opacity:0}
+.link.h2 .c1,.link.h1 .c1,.link.h1 .c2,.link.h1 .c3{opacity:1}
+.link.h1{color:#a88a7a}.link.hit{animation:shake .25s}
+.link.h0{pointer-events:none;opacity:0;transform:translateY(100px) rotate(40deg)}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.chainrow.free .anchor{animation:hop .6s ease 3;transform:translateX(14px)}
+@keyframes hop{50%{transform:translate(14px,-18px)}}
+.meter{height:6px;background:var(--line);max-width:420px;margin:0 auto 14px}.meter div{height:100%;width:0;background:var(--red);transition:width .4s}
+#gmsg{min-height:3.4em;margin:0 0 10px}
+[hidden]{display:none!important}
+.btn:disabled{opacity:.45;cursor:default}
+.ptog button{font:inherit;font-size:.9rem;color:var(--dim);background:none;border:1px solid var(--line);padding:3px 10px;margin-left:6px;cursor:pointer}.ptog button[aria-pressed="true"]{color:var(--text);border-color:var(--red)}
+@media(pointer:coarse){.ptog{display:none}}
+.cp{position:fixed;pointer-events:none;z-index:80;animation:cpf 1.4s ease-out forwards}.cp svg{display:block;width:100%;height:100%}
+@keyframes cpf{0%{opacity:0}15%{opacity:.75}100%{opacity:0}}
+.qbox{margin:28px 0 0;max-width:720px;padding:30px 26px;border:1px solid var(--line);background:var(--bg2)}
+.qtext{font:500 clamp(1.25rem,3.4vw,1.7rem)/1.3 'Oswald',sans-serif;min-height:4.2em;margin:0 0 6px}
+.qbtns{display:flex;gap:14px;flex-wrap:wrap}.qexp{min-height:5em;color:var(--dim);margin:18px 0 8px}
+.qfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--dim);font-size:.95rem}
+.tabpanel:not([hidden]){animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.signs li{transition:padding-left .25s,border-color .25s}.signs li:hover{padding-left:12px;border-bottom-color:var(--red)}
+.menu a,.tabs button{transition:color .2s,border-color .2s}.btn{transition:background .2s,transform .2s}.btn:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="loader" role="status" aria-label="Загрузка">
+  <svg viewBox="0 0 520 120" aria-hidden="true">
+    <g style="color:#9aa8b6"><use class="p" style="--i:0" href="#paw" x="16" y="16" width="48" height="48" transform="rotate(90 40 40)"/><use class="p" style="--i:2" href="#paw" x="146" y="51" width="48" height="48" transform="rotate(90 170 75)"/><use class="p" style="--i:4" href="#paw" x="276" y="16" width="48" height="48" transform="rotate(90 300 40)"/><use class="p" style="--i:6" href="#paw" x="406" y="51" width="48" height="48" transform="rotate(90 430 75)"/></g>
+    <g style="color:#e07a3a"><use class="p" style="--i:1" href="#paw" x="93" y="68" width="24" height="24" transform="rotate(90 105 80)"/><use class="p" style="--i:3" href="#paw" x="223" y="33" width="24" height="24" transform="rotate(90 235 45)"/><use class="p" style="--i:5" href="#paw" x="353" y="68" width="24" height="24" transform="rotate(90 365 80)"/><use class="p" style="--i:7" href="#paw" x="483" y="33" width="24" height="24" transform="rotate(90 495 45)"/></g>
+  </svg>
+  <span>Загрузка</span>
+</div>
+<script>(function(){var h=document.documentElement,L=document.getElementById('loader'),t0=Date.now(),fin=false;h.classList.add('pre');function done(){if(fin)return;fin=true;L.classList.add('done');h.classList.remove('pre');setTimeout(function(){L.style.display='none'},700)}function go(){setTimeout(done,Math.max(0,2000-(Date.now()-t0)))}if(document.readyState==='complete')go();else window.addEventListener('load',go);setTimeout(done,9000)})();</script>
+<nav aria-label="Меню сайта"><div class="wrap">
+  <a class="logo" href="#top">Стоп, бои</a>
+  <button id="burger" type="button" aria-expanded="false" aria-controls="menu">Меню</button>
+  <ul class="menu" id="menu">
+    <li><a href="#top">Главная</a></li><li><a href="#about">Мультфильм</a></li><li><a href="#truth">Правда</a></li>
+    <li><a href="#signs">Признаки</a></li><li><a href="#help">Помощь</a></li><li><a href="#watch">Смотреть</a></li><li><a href="#game">Игра</a></li><li><a href="#quiz">Тест</a></li><li class="ptog"><button id="ptoggle" type="button" aria-pressed="true" title="Следы курсора">Следы</button></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top">
+  <svg class="skyline" viewBox="0 0 900 150" preserveAspectRatio="none" aria-hidden="true"><g fill="#15110f"><rect x="0" y="70" width="110" height="80"/><rect x="130" y="40" width="90" height="110"/><rect x="240" y="85" width="120" height="65"/><rect x="380" y="55" width="80" height="95"/><rect x="480" y="90" width="130" height="60"/><rect x="630" y="35" width="100" height="115"/><rect x="750" y="75" width="150" height="75"/></g><g fill="#e8893c"><rect x="20" y="90" width="12" height="16"/><rect x="60" y="110" width="12" height="16"/><rect x="150" y="62" width="12" height="16"/><rect x="185" y="100" width="12" height="16"/><rect x="280" y="105" width="12" height="16"/><rect x="405" y="80" width="12" height="16"/><rect x="520" y="110" width="12" height="16"/><rect x="655" y="60" width="12" height="16"/><rect x="690" y="100" width="12" height="16"/><rect x="790" y="95" width="12" height="16"/></g><path d="M0 22Q200 56 450 24T900 34" stroke="#15110f" fill="none" stroke-width="2"/></svg>
+  <svg class="chain" viewBox="0 0 120 600" preserveAspectRatio="xMidYMin slice" aria-hidden="true" fill="none" stroke="#9a968d" stroke-width="6">
+    <g id="lnk"><rect x="40" y="0" width="40" height="70" rx="20"/><rect x="48" y="56" width="24" height="70" rx="12"/></g>
+    <use href="#lnk" y="110"/><use href="#lnk" y="220"/><use href="#lnk" y="330"/><use href="#lnk" y="440"/>
+  </svg>
+  <div class="wrap">
+    <h1>Собачьи бои — это <em>не спорт</em></h1>
+    <p>Собак заставляют драться ради денег и азарта. Им больно и страшно, и они не выбирали этого.</p>
+    <a class="btn" href="#help">Как помочь</a>
+  </div>
+</header>
+
+<section class="about" id="about"><div class="wrap grid">
+  <div>
+    <h2>Kitbull</h2>
+    <p>Короткометражка студии Pixar 2019 года. Бездомный котёнок знакомится с псом, которого держат на цепи и жестоко с ним обращаются. Без слов, одной только дружбой, фильм говорит о том, о чём принято молчать.</p>
+    <a class="btn ghost" href="#watch">Смотреть мультфильм</a>
+  </div>
+  <div>
+    <svg class="nose" viewBox="0 0 300 220" role="img" aria-label="Нос пса с царапинами от котёнка" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M30 200Q18 92 150 56Q282 92 270 200Z" fill="#7f8c9b" stroke="#0c0a09" stroke-width="4"/>
+      <path d="M60 120Q80 100 100 108M240 120Q220 100 200 108M120 66Q150 52 180 66" fill="none" stroke="#5d6977" stroke-width="3"/>
+      <path d="M92 88Q150 52 208 88Q220 128 150 140Q80 128 92 88Z" fill="#1a1512" stroke="#0c0a09" stroke-width="4"/>
+      <ellipse cx="124" cy="106" rx="15" ry="7" transform="rotate(-22 124 106)" fill="#000"/><ellipse cx="176" cy="106" rx="15" ry="7" transform="rotate(22 176 106)" fill="#000"/>
+      <ellipse cx="150" cy="80" rx="32" ry="6" fill="#fff" opacity=".22"/>
+      <path d="M150 140V164M150 164Q122 190 90 176M150 164Q178 190 210 176" fill="none" stroke="#0c0a09" stroke-width="4"/>
+      <g fill="#4d5865"><circle cx="80" cy="150" r="3"/><circle cx="96" cy="160" r="3"/><circle cx="220" cy="150" r="3"/><circle cx="204" cy="160" r="3"/></g>
+      <g fill="none" stroke="#e0603a" stroke-width="3.5">
+        <path class="sc" pathLength="80" d="M118 58L142 146"/><path class="sc" pathLength="80" d="M142 58L166 146" style="transition-delay:.7s"/><path class="sc" pathLength="80" d="M166 58L190 146" style="transition-delay:.9s"/>
+        
+      </g>
+    </svg>
+    
+    <blockquote>Ни одна собака не рождается бойцом. Бойцом её делают люди.</blockquote>
+  </div>
+</div></section>
+
+<section class="alt" id="truth"><div class="wrap">
+  <h2>Что на самом деле происходит</h2>
+  <div class="cols">
+    <div><h3>Боль ради ставок</h3><p>Собак специально травмируют и натравливают друг на друга, а проигравших часто бросают без помощи.</p></div>
+    <div><h3>Жизнь на цепи</h3><p>Их держат в изоляции и учат агрессии, а не доверию. По природе они такие же добрые, как и любые другие.</p></div>
+    <div><h3>Это преступление</h3><p>В России жестокое обращение с животными наказывается по статье 245 УК РФ.</p></div>
+  </div>
+</div></section>
+
+<section class="signs" id="signs"><div class="wrap">
+  <h2>Как заметить беду</h2>
+  <ul>
+    <li><b>Шрамы</b><span>Следы на морде, шее и передних лапах, не похожие на случайные царапины.</span></li>
+    <li><b>Цепь и изоляция</b><span>Собака на тяжёлой цепи в закрытом дворе, без прогулок и общения.</span></li>
+    <li><b>Закрытые чаты</b><span>Группы со «встречами», ставками и просьбой не светить место.</span></li>
+    <li><b>Видео драк</b><span>Ролики, где драку подают как развлечение. Их нельзя смотреть и пересылать.</span></li>
+  </ul>
+</div></section>
+
+<section class="alt" id="help"><div class="wrap">
+  <h2>Как остановить это вместе</h2>
+  <div class="tabs" role="tablist" aria-label="Что делать">
+    <button role="tab" aria-selected="true" aria-controls="p1" id="t1">Увидел собаку</button>
+    <button role="tab" aria-selected="false" aria-controls="p2" id="t2">Узнал о бое</button>
+    <button role="tab" aria-selected="false" aria-controls="p3" id="t3">Хочу помочь</button>
+  </div>
+  <div class="tabpanel" role="tabpanel" id="p1" aria-labelledby="t1"><ol><li>Не подходите к собаке и не вмешивайтесь сами: это опасно.</li><li>Запишите адрес, время и приметы, сфотографируйте издалека.</li><li>Позвоните: <span class="sos">102</span><span class="sos">112</span></li></ol></div>
+  <div class="tabpanel" role="tabpanel" id="p2" aria-labelledby="t2" hidden><ol><li>Не приходите «посмотреть» и не публикуйте видео.</li><li>Сохраните скриншоты переписки, ссылку на чат и дату.</li><li>Передайте всё в полицию и зоозащитникам вашего города.</li></ol></div>
+  <div class="tabpanel" role="tabpanel" id="p3" aria-labelledby="t3" hidden><ol><li>Берите питомцев из приютов, а не у случайных продавцов.</li><li>Помогайте приютам кормом, деньгами или временной передержкой.</li><li>Расскажите друзьям: бои собак — это жестокость, а не спорт.</li></ol></div>
+</div></section>
+
+<section class="trailsec" aria-label="Следы пса и котёнка"><div class="wrap">
+  <svg class="trail" viewBox="0 0 900 170" role="img" aria-label="Следы лап пса и котёнка идут рядом">
+    <defs><symbol id="paw" viewBox="0 0 100 100" fill="currentColor"><path d="M50 44Q76 44 80 68Q82 88 50 86Q18 88 20 68Q24 44 50 44Z"/><ellipse cx="20" cy="40" rx="9" ry="13" transform="rotate(-22 20 40)"/><ellipse cx="40" cy="22" rx="9" ry="14"/><ellipse cx="60" cy="22" rx="9" ry="14"/><ellipse cx="80" cy="40" rx="9" ry="13" transform="rotate(22 80 40)"/></symbol></defs>
+    <g style="color:#9aa8b6"><use class="p" style="--i:0" href="#paw" x="40" y="30" width="60" height="60" transform="rotate(90 70 60)"/><use class="p" style="--i:2" href="#paw" x="160" y="70" width="60" height="60" transform="rotate(90 190 100)"/><use class="p" style="--i:4" href="#paw" x="280" y="30" width="60" height="60" transform="rotate(90 310 60)"/><use class="p" style="--i:6" href="#paw" x="400" y="70" width="60" height="60" transform="rotate(90 430 100)"/><use class="p" style="--i:8" href="#paw" x="520" y="30" width="60" height="60" transform="rotate(90 550 60)"/><use class="p" style="--i:10" href="#paw" x="640" y="70" width="60" height="60" transform="rotate(90 670 100)"/><use class="p" style="--i:12" href="#paw" x="760" y="30" width="60" height="60" transform="rotate(90 790 60)"/></g>
+    <g style="color:#e07a3a"><use class="p" style="--i:1" href="#paw" x="115" y="95" width="30" height="30" transform="rotate(90 130 110)"/><use class="p" style="--i:3" href="#paw" x="235" y="55" width="30" height="30" transform="rotate(90 250 70)"/><use class="p" style="--i:5" href="#paw" x="355" y="95" width="30" height="30" transform="rotate(90 370 110)"/><use class="p" style="--i:7" href="#paw" x="475" y="55" width="30" height="30" transform="rotate(90 490 70)"/><use class="p" style="--i:9" href="#paw" x="595" y="95" width="30" height="30" transform="rotate(90 610 110)"/><use class="p" style="--i:11" href="#paw" x="715" y="55" width="30" height="30" transform="rotate(90 730 70)"/><use class="p" style="--i:13" href="#paw" x="835" y="95" width="30" height="30" transform="rotate(90 850 110)"/></g>
+  </svg>
+  <p class="note">Большие следы — пса, маленькие — котёнка. Дальше они идут вместе.</p>
+</div></section>
+
+<section id="watch"><div class="wrap">
+  <h2>Смотреть мультфильм</h2>
+  <p class="note">Kitbull, Pixar, 2019.</p>
+  <div class="tv"><iframe src="https://www.youtube-nocookie.com/embed/dHzITtGtJmc" title="Kitbull, мультфильм Pixar" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+  <p class="note">Видео не открылось? <a href="https://www.youtube.com/watch?v=dHzITtGtJmc" target="_blank" rel="noopener">Смотреть на YouTube</a></p>
+</div></section>
+
+<section class="alt game" id="game"><div class="wrap">
+  <h2>Освободи пса</h2>
+  <p class="note">Нажимайте на звенья цепи. Каждому нужно три удара.</p>
+  <div class="gamebox">
+    <div class="chainrow" id="chainrow" role="group" aria-label="Цепь"></div>
+    <div class="meter"><div id="bar"></div></div>
+    <p id="gmsg" aria-live="polite"></p>
+    <button class="btn ghost" id="greset" type="button">Начать заново</button>
+  </div>
+</div></section>
+
+<section id="quiz"><div class="wrap">
+  <h2>Правда или миф</h2>
+  <p class="note">Пять утверждений. Выберите ответ, и я объясню, почему это так.</p>
+  <div class="qbox" id="qbox">
+    <p class="qtext" id="qtext" aria-live="polite"></p>
+    <div class="qbtns" id="qbtns"><button class="btn" data-a="1" type="button">Правда</button><button class="btn ghost" data-a="0" type="button">Миф</button></div>
+    <p class="qexp" id="qexp" aria-live="polite"></p>
+    <div class="qfoot"><span id="qprog"></span><button class="btn ghost" id="qnext" type="button" hidden>Дальше</button></div>
+  </div>
+</div></section>
+
+<footer><p>Друзей не бросают. Особенно четвероногих.</p><p>Полиция: <b>102</b> или <b>112</b></p></footer>
+
+<script>
+(function(){
+  var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A'){menu.classList.remove('open');burger.setAttribute('aria-expanded','false')}});
+  var links=[].slice.call(menu.querySelectorAll('a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function spy(){var y=window.scrollY+130,cur=0;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i});links.forEach(function(a,i){a.classList.toggle('act',i===cur)})}
+  window.addEventListener('scroll',spy,{passive:true});spy();
+  if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)){
+    document.documentElement.classList.add('js');
+    var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add('in');rio.unobserve(t);setTimeout(function(){t.style.transitionDelay=''},1400)}})},{threshold:.15});
+    [].slice.call(document.querySelectorAll('section h2,.about .grid>*,.cols>div,.signs li,.tabs,.tv')).forEach(function(el,i){el.classList.add('rv');el.style.transitionDelay=((i%3)*.12)+'s';rio.observe(el)});
+  }
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var trailOn=!rm&&window.matchMedia&&matchMedia('(pointer:fine)').matches,lx=-999,ly=-999,flip=false,pt=document.getElementById('ptoggle');
+  if(pt){pt.setAttribute('aria-pressed',trailOn);pt.addEventListener('click',function(){trailOn=!trailOn;pt.setAttribute('aria-pressed',trailOn)})}
+  document.addEventListener('pointermove',function(e){
+    if(!trailOn||e.pointerType!=='mouse')return;
+    var dx=e.clientX-lx,dy=e.clientY-ly,d=Math.sqrt(dx*dx+dy*dy);if(d<64)return;
+    var ang=Math.atan2(dy,dx)*180/Math.PI+90,s=flip?16:28,side=flip?-1:1;flip=!flip;
+    var x=e.clientX+(-dy/d)*10*side,y=e.clientY+(dx/d)*10*side;lx=e.clientX;ly=e.clientY;
+    var el=document.createElement('div');el.className='cp';
+    el.style.cssText='left:'+(x-s/2)+'px;top:'+(y-s/2)+'px;width:'+s+'px;height:'+s+'px;transform:rotate('+ang+'deg);color:'+(s>20?'#9aa8b6':'#e07a3a');
+    el.innerHTML='<svg viewBox="0 0 100 100" aria-hidden="true"><use href="#paw"/></svg>';
+    document.body.appendChild(el);setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},1500);
+  });
+  var qt=document.getElementById('qtext');
+  if(qt){
+    var Q=[['Собаки дерутся сами, людям просто интересно смотреть.',0,'Миф. Собак специально готовят: изолируют, травмируют и натравливают.'],
+      ['Если вы узнали о бое, достаточно рассказать об этом друзьям.',0,'Миф. Нужно сообщить в полицию по 102 или 112 и передать всё, что удалось сохранить.'],
+      ['Репосты видео драк помогают таким боям держаться на плаву.',1,'Правда. Такие ролики привлекают внимание и подогревают интерес к боям, поэтому их не нужно пересылать.'],
+      ['За жестокое обращение с животными в России есть уголовная ответственность.',1,'Правда. Это статья 245 УК РФ.'],
+      ['Собака, пережившая бои, уже не может жить в семье.',0,'Миф. Многим собакам с помощью специалистов и заботы удаётся вернуться к спокойной жизни.']];
+    var qi=0,sc=0,fin=false,ans=false,qe=document.getElementById('qexp'),qp=document.getElementById('qprog'),qn=document.getElementById('qnext'),qb=document.getElementById('qbtns'),bs=[].slice.call(qb.querySelectorAll('button'));
+    function show(){ans=false;fin=false;qb.hidden=false;qe.textContent='';qn.hidden=true;bs.forEach(function(b){b.disabled=false});qt.textContent=Q[qi][0];qp.textContent='Вопрос '+(qi+1)+' из '+Q.length}
+    bs.forEach(function(b){b.addEventListener('click',function(){if(ans)return;ans=true;var ok=(+b.dataset.a)===Q[qi][1];if(ok)sc++;qe.textContent=(ok?'Верно. ':'Не совсем. ')+Q[qi][2];bs.forEach(function(x){x.disabled=true});qn.textContent=qi<Q.length-1?'Дальше':'Результат';qn.hidden=false})});
+    qn.addEventListener('click',function(){
+      if(fin){qi=0;sc=0;show();return}
+      if(qi<Q.length-1){qi++;show();return}
+      fin=true;qb.hidden=true;qt.textContent='Верных ответов: '+sc+' из '+Q.length+'. Теперь вы знаете больше и можете рассказать другим.';qe.textContent='';qp.textContent='';qn.textContent='Пройти заново';
+    });
+    show();
+  }
+  var row=document.getElementById('chainrow');
+  if(row){
+    var N=6,HP=3,left=N,bar=document.getElementById('bar'),msg=document.getElementById('gmsg');
+    var LK='<svg viewBox="0 0 60 90" aria-hidden="true"><rect x="9" y="9" width="42" height="72" rx="21" fill="none" stroke="currentColor" stroke-width="10"/><path class="cr c1" d="M30 9L23 25L35 36"/><path class="cr c2" d="M51 48L38 55L45 71"/><path class="cr c3" d="M9 54L20 61"/></svg>';
+    function upd(){bar.style.width=((N-left)/N*100)+'%';msg.textContent='Разбито звеньев: '+(N-left)+' из '+N}
+    function build(){
+      left=N;var h='<svg class="end" viewBox="0 0 40 90" aria-hidden="true"><rect x="8" y="4" width="24" height="82" rx="4" fill="#4a4038" stroke="#0c0a09" stroke-width="3"/></svg>';
+      for(var i=0;i<N;i++)h+='<button type="button" class="link" data-hp="'+HP+'" aria-label="Звено '+(i+1)+', ударов до разрыва: '+HP+'">'+LK+'</button>';
+      h+='<svg class="end anchor" viewBox="0 0 100 100" aria-hidden="true" style="color:#9aa8b6"><use href="#paw"/></svg>';
+      row.className='chainrow';row.innerHTML=h;upd();
+    }
+    row.addEventListener('click',function(e){
+      var b=e.target.closest&&e.target.closest('.link');if(!b)return;
+      var hp=+b.dataset.hp;if(hp<=0)return;hp--;b.dataset.hp=hp;
+      b.classList.remove('hit','h2','h1','h0');void b.offsetWidth;b.classList.add('hit','h'+hp);
+      b.setAttribute('aria-label','Звено, ударов до разрыва: '+hp);
+      if(hp===0){b.tabIndex=-1;left--;upd();
+        if(left===0){row.classList.add('free');msg.textContent='Цепь порвана, он свободен. В жизни так же важно вовремя помочь: если заметили жестокое обращение с собакой, звоните 102 или 112.'}}
+    });
+    document.getElementById('greset').addEventListener('click',build);
+    build();
+  }
+  var tr=document.querySelector('.trail');
+  if(tr&&document.documentElement.classList.contains('js')){var tio=new IntersectionObserver(function(es){if(es[0].isIntersecting){tr.classList.add('go');tio.disconnect()}},{threshold:.4});tio.observe(tr)}
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(o){var on=o===t;o.setAttribute('aria-selected',on);document.getElementById(o.getAttribute('aria-controls')).hidden=!on})})});
+})();
+</script>
+</body>
+</html>
